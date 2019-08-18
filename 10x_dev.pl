@@ -7,13 +7,11 @@ devs(Devs) :-
 
   fd_labeling(Devs),
 
-  Jessie #\= 1,
-  Evan #\= 5,
-  John #\= 1,
-  John #\= 5,
-  Sarah #< Evan,
-  Matt #\= John - 1,
-  Matt #\= John + 1,
-  John #\= Evan - 1,
-  John #\= Evan + 1.
+  Jessie =\= 1,
+  Evan =\= 5,
+  John =\= 1,
+  John =\= 5,
+  Sarah < Evan,
+  abs(Matt - John) =\= 1,
+  abs(John - Evan) =\= 1.
 
