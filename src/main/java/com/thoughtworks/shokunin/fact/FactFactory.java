@@ -1,16 +1,25 @@
 package com.thoughtworks.shokunin.fact;
 
+import java.util.regex.Pattern;
+
 public class FactFactory {
+
+    private static final Pattern notTheBest = Pattern.compile("(\\w+) is not the best developer");
+    private static final Pattern notTheWorst = Pattern.compile("(\\w+) is not the worst developer");
+    private static final Pattern notTheBestOrWorst = Pattern.compile("(\\w+) is not the best developer or the worst developer");
+    private static final Pattern isBetterThan = Pattern.compile("(\\w+) is a better developer than (\\w+)");
+    private static final Pattern isNotDirectlyBelowOrAbove = Pattern.compile("(\\w+) is not directly below or above (\\w+) as a developer");
+
     public static Fact getFact(String factString) {
-        if (factString.endsWith("is not the best developer")) {
+        if (notTheBest.matcher(factString).matches()) {
             return new NotTheBest(factString);
-        } else if (factString.endsWith("is not the worst developer")) {
+        } else if (notTheWorst.matcher(factString).matches()) {
             return new NotTheWorst(factString);
-        } else if (factString.endsWith("is not the best developer or the worst developer")) {
+        } else if (notTheBestOrWorst.matcher(factString).matches()) {
             return new NotTheBestOrTheWorst(factString);
-        } else if (factString.contains("is a better developer than")) {
+        } else if (isBetterThan.matcher(factString).matches()) {
             return new IsBetterThan(factString);
-        } else if (factString.contains("is not directly below or above")) {
+        } else if (isNotDirectlyBelowOrAbove.matcher(factString).matches()) {
             return new IsNotDirectlyBelowOrAbove(factString);
         } else {
             return new NullFact(factString);
