@@ -1,4 +1,4 @@
-package com.thoughtworks.shokunin;
+package com.thoughtworks.shokunin.fact;
 
 public class FactFactory {
     public static Fact getFact(String factString) {

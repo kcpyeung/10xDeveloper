@@ -1,4 +1,4 @@
-package com.thoughtworks.shokunin;
+package com.thoughtworks.shokunin.fact;
 
 import org.junit.jupiter.api.Test;
 
