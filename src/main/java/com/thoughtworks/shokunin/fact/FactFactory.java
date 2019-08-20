@@ -23,7 +23,7 @@ public class FactFactory {
         try {
             return clazz.getDeclaredConstructor(String.class).newInstance(factString);
         } catch (Exception e) {
-            return new ErrorFact(e);
+            return new ErrorFact(clazz, factString, e);
         }
     }
 
