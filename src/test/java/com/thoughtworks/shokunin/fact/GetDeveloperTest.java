@@ -54,4 +54,18 @@ class GetDeveloperTest {
         assertEquals(List.of("Matt", "John"), fact.getDevelopers());
     }
 
+    @Test
+    void countUniqueDevelopers() {
+        List<String> factStrings = List.of(
+                "Jessie is not the best developer",
+                "Evan is not the worst developer",
+                "John is not the best developer or the worst developer",
+                "Sarah is a better developer than Evan",
+                "Matt is not directly below or above John as a developer");
+
+        List<Fact> facts = factStrings.map(FactFactory::getFact);
+
+        assertEquals(5, new Developers(facts).count);
+    }
+
 }
