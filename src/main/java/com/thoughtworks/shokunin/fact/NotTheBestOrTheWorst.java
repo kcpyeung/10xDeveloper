@@ -9,9 +9,13 @@ public class NotTheBestOrTheWorst implements Fact {
     private static final Pattern pattern = Pattern.compile("(\\w+) is not the best developer or the worst developer");
 
     private final String factString;
+    private final List<Fact> rewritten;
 
     public NotTheBestOrTheWorst(String factString) {
         this.factString = factString;
+        rewritten = List.of(
+                new NotTheBest(String.format("%s is not the best developer", getDevelopers().get(0))),
+                new NotTheWorst(String.format("%s is not the worst developer", getDevelopers().get(0))));
     }
 
     public static boolean accepts(String fact) {
@@ -27,9 +31,7 @@ public class NotTheBestOrTheWorst implements Fact {
 
     @Override
     public List<String> toProlog(Facts allFacts) {
-        return List.of(
-                String.format("%s =\\= 1", getDevelopers().get(0)),
-                String.format("%s =\\= %d", getDevelopers().get(0), allFacts.developerCount));
+        return rewritten.flatMap(fact -> fact.toProlog(allFacts));
     }
 
 }
