@@ -12,7 +12,7 @@ if [ $? -ne 0 ]; then
   exit 3
 fi
 
-gradle run
+gradle --no-daemon --quiet run
 
 chmod 700 run_prolog
 ./run_prolog
