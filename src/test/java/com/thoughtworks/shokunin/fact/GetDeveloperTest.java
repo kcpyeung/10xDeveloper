@@ -60,7 +60,8 @@ class GetDeveloperTest {
                 "Evan is not the worst developer",
                 "John is not the best developer or the worst developer",
                 "Sarah is a better developer than Evan",
-                "Matt is not directly below or above John as a developer");
+                "Matt is not directly below or above John as a developer",
+                "John is not directly below or above Evan as a developer");
 
         assertEquals(5, new Facts(factStrings).developerCount);
     }
@@ -72,7 +73,8 @@ class GetDeveloperTest {
                 "Evan is not the worst developer",
                 "John is not the best developer or the worst developer",
                 "Sarah is a better developer than Evan",
-                "Matt is not directly below or above John as a developer");
+                "Matt is not directly below or above John as a developer",
+                "John is not directly below or above Evan as a developer");
 
         assertEquals("Evan, Jessie, John, Matt, Sarah", new Facts(factStrings).developerNames);
     }
