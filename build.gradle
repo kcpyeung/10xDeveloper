@@ -36,7 +36,7 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = 'com.thoughtworks.shokunin.App'
+    mainClassName = 'com.thoughtworks.shokunin.SuperDuperDeveloper'
 }
 
 test {
