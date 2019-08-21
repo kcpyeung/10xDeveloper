@@ -25,4 +25,9 @@ public class NotTheBest implements Fact {
         return List.of(matcher.group(1));
     }
 
+    @Override
+    public List<String> toProlog(Facts allFacts) {
+        return List.of(String.format("%s =\\= 1", getDevelopers().get(0)));
+    }
+
 }

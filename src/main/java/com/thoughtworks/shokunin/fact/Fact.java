@@ -4,4 +4,6 @@ import io.vavr.collection.List;
 
 public interface Fact {
     List<String> getDevelopers();
+
+    List<String> toProlog(Facts allFacts);
 }

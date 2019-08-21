@@ -14,4 +14,9 @@ public class NullFact implements Fact {
         return List.empty();
     }
 
+    @Override
+    public List<String> toProlog(Facts allFacts) {
+        throw new IllegalArgumentException("Unknown fact structure: " + factString);
+    }
+
 }

@@ -18,4 +18,13 @@ public class ErrorFact implements Fact {
         return List.empty();
     }
 
+    @Override
+    public List<String> toProlog(Facts allFacts) {
+        String message = String.format(
+                "Error parsing '%s'\n" +
+                "Fact class: %s\n" +
+                "Original exception: %s", factString, clazz.getCanonicalName(), exception.getMessage());
+        throw new RuntimeException(message, exception);
+    }
+
 }

@@ -25,4 +25,9 @@ public class IsBetterThan implements Fact {
         return List.of(matcher.group(1), matcher.group(2));
     }
 
+    @Override
+    public List<String> toProlog(Facts allFacts) {
+        return List.of(String.format("%s < %s", getDevelopers().get(0), getDevelopers().get(1)));
+    }
+
 }
