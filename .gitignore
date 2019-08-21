@@ -2,3 +2,6 @@
 build/
 
 .gradle/
+
+10x_dev.pl
+run_prolog

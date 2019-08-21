@@ -6,4 +6,13 @@ if [ $? -ne 0 ]; then
   exit 2
 fi
 
-gprolog --consult-file 10x_dev.pl --query-goal 'devs([Jessie, Evan, John, Sarah, Matt])'
+hash gradle 2>/dev/null
+if [ $? -ne 0 ]; then
+  echo "Please install Gradle before continuing"
+  exit 3
+fi
+
+gradle run
+
+chmod 700 run_prolog
+./run_prolog

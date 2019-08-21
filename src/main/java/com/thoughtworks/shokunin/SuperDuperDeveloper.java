@@ -1,5 +1,6 @@
 package com.thoughtworks.shokunin;
 
+import com.thoughtworks.shokunin.fact.Facts;
 import com.thoughtworks.shokunin.fact.PrologFileGenerator;
 import io.vavr.collection.List;
 
@@ -18,6 +19,12 @@ public class SuperDuperDeveloper {
         try (BufferedWriter out = new BufferedWriter(new FileWriter("10x_dev.pl"))) {
             out.write(new PrologFileGenerator(factStrings).generate());
         }
+
+        try (BufferedWriter out = new BufferedWriter(new FileWriter("run_prolog"))) {
+            Facts facts = new Facts(factStrings);
+            out.write(String.format("gprolog --consult-file 10x_dev.pl --query-goal 'devs([%s])'\n", facts.developerNames));
+        }
+
     }
 
     private static List<String> readFacts(String arg) throws IOException {
