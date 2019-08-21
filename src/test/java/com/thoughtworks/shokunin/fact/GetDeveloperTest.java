@@ -3,7 +3,6 @@ package com.thoughtworks.shokunin.fact;
 import io.vavr.collection.List;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -63,9 +62,19 @@ class GetDeveloperTest {
                 "Sarah is a better developer than Evan",
                 "Matt is not directly below or above John as a developer");
 
-        List<Fact> facts = factStrings.map(FactFactory::getFact);
+        assertEquals(5, new Facts(factStrings).developerCount);
+    }
 
-        assertEquals(5, new Developers(facts).count);
+    @Test
+    void sortedUniqueDeveloperNames() {
+        List<String> factStrings = List.of(
+                "Jessie is not the best developer",
+                "Evan is not the worst developer",
+                "John is not the best developer or the worst developer",
+                "Sarah is a better developer than Evan",
+                "Matt is not directly below or above John as a developer");
+
+        assertEquals("Evan, Jessie, John, Matt, Sarah", new Facts(factStrings).developerNames);
     }
 
 }
